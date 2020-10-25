@@ -5,7 +5,7 @@ defmodule ABI.TypeDecoder do
   data and decode that into the original arguments according to the
   specification.
   """
-
+  require IEx
   alias ABI.FunctionSelector
 
   @doc """
@@ -138,22 +138,24 @@ defmodule ABI.TypeDecoder do
   """
   def decode(encoded_data, selector_or_types, data_type \\ :input)
 
-  def decode(encoded_data, %FunctionSelector{types: types, method_id: method_id}, :input)
-      when is_binary(method_id) do
+  def decode(encoded_data, %FunctionSelector{types: types, method_id: method_id}, :input) when is_binary(method_id) do
+    IEx.pry
     {:ok, ^method_id, rest} = ABI.Util.split_method_id(encoded_data)
-
     decode_raw(rest, types)
   end
 
   def decode(encoded_data, %FunctionSelector{types: types}, :input) do
+  IEx.pry
     decode(encoded_data, types)
   end
 
   def decode(encoded_data, %FunctionSelector{returns: types}, :output) do
+  IEx.pry
     decode(encoded_data, types)
   end
 
   def decode(encoded_data, types, _) when is_list(types) do
+  IEx.pry
     decode_raw(encoded_data, types)
   end
 
