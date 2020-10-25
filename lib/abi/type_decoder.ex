@@ -295,7 +295,7 @@ defmodule ABI.TypeDecoder do
 
   defp decode_type({:array, type}, data, full_data) do
     {offset, rest_bytes} = decode_uint(data, 256)
-    IEx.pry
+    
     <<_padding::binary-size(offset), rest_data::binary>> = full_data
     {count, bytes} = decode_uint(rest_data, 256)
 
