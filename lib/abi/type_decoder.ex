@@ -154,7 +154,6 @@ defmodule ABI.TypeDecoder do
   end
 
   def decode(encoded_data, types, _) when is_list(types) do
-  IEx.pry
     decode_raw(encoded_data, types)
   end
 
