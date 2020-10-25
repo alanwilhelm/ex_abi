@@ -145,7 +145,6 @@ defmodule ABI.TypeDecoder do
   end
 
   def decode(encoded_data, %FunctionSelector{types: types}, :input) do
-  IEx.pry
     decode(encoded_data, types)
   end
 
